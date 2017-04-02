@@ -10,5 +10,4 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)//在运行时有效（即运行时保留）
 public @interface Description {
 	String value();
-	String display();
 }
