@@ -17,6 +17,13 @@
     id, instructions, description, create_time, creator, revision_time, revisor, remarks, 
     is_delete, pid
   </sql>
+  
+  <select id="queryList" parameterType="com.cghsir.model.Instructions" resultMap="BaseResultMap">
+	select 
+	<include refid="Base_Column_List" />
+    from instructions
+  </select>
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

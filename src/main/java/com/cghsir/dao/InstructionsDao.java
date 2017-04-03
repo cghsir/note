@@ -1,5 +1,7 @@
 package com.cghsir.dao;
 
+import java.util.List;
+
 import com.cghsir.model.Instructions;
 /**
  * @author cghsir
@@ -49,4 +51,11 @@ public interface InstructionsDao {
      * @return
      */
     int updateByPrimaryKey(Instructions record);
+
+    /**
+     * 根据一个对象查询列表
+     * @param record
+     * @return
+     */
+	List<Instructions> queryList(Instructions record);
 }

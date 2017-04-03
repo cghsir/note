@@ -1,5 +1,7 @@
 package com.cghsir.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +73,16 @@ public class InstructionsServiceImpl implements InstructionsServiceI {
      */
 	public int updateByPrimaryKey(Instructions record) {
 		return instructionsDao.updateByPrimaryKey(record);
+	}
+
+	/**
+     * 根据一个对象查询列表
+     * @param record
+     * @return
+     */
+	@Override
+	public List<Instructions> queryList(Instructions record) {
+		return instructionsDao.queryList(record);
 	}
 
 }

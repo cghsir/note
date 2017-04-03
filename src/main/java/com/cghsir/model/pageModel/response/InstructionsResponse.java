@@ -12,7 +12,7 @@ public class InstructionsResponse {
 	
 	//主键
 	@Description("主键")
-    private Integer id;
+    private String id;
 
     //指令
 	@Description("指令")
@@ -48,13 +48,13 @@ public class InstructionsResponse {
 
 	//外键
 	@Description("外键")
-    private Integer pid;
+    private String pid;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -122,11 +122,11 @@ public class InstructionsResponse {
         this.isDelete = isDelete == null ? null : isDelete.trim();
     }
 
-    public Integer getPid() {
+    public String getPid() {
         return pid;
     }
 
-    public void setPid(Integer pid) {
+    public void setPid(String pid) {
         this.pid = pid;
     }
 }

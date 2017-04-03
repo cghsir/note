@@ -2,6 +2,7 @@ package com.cghsir.controller;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -17,11 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ch.qos.logback.classic.gaffer.PropertyUtil;
 
 import com.cghsir.common.UtilProcess;
+import com.cghsir.common.UtilVoHelper;
 import com.cghsir.model.Instructions;
 import com.cghsir.model.pageModel.request.InstructionsRequest;
 import com.cghsir.model.pageModel.response.InstructionsResponse;
+import com.cghsir.model.pageModel.ui.easyui.DataGrid;
 import com.cghsir.model.pageModel.util.Json;
 import com.cghsir.service.InstructionsServiceI;
+import com.github.pagehelper.Page;
 
 /**
  * @author cghsir
@@ -47,6 +51,11 @@ public class InstructionsController {
 		json.setSuccess(true);
 		json.setMsg("执行成功");
 		return json;
+	}
+	
+	@RequestMapping("/toList")
+	public String toList(){
+		return "instructionsList";
 	}
 	
 	@RequestMapping("/insertSelective")
@@ -75,5 +84,22 @@ public class InstructionsController {
 		return json;
 //		//TODO 异常处理 以后处理成跳转到错误页面
 //		UtilProcess.writeJson(json, response);
+	}
+	
+	@RequestMapping("/queryList")
+	@ResponseBody
+	public DataGrid queryList(HttpServletRequest request, HttpServletResponse response,InstructionsRequest instructionsRequest) throws Exception{
+		DataGrid dataGrid = new DataGrid();
+		// 分页初始化
+		UtilProcess.startPage(request);
+		// 查询出所有信息，传到前台
+		Instructions instructions = new Instructions();
+		PropertyUtils.copyProperties(instructions, instructionsRequest);
+		Page<Instructions> page = (Page<Instructions>)instructionsService.queryList(instructions);
+		List<InstructionsResponse> listResponse = UtilVoHelper.conversionList(page, InstructionsResponse.class);
+        //返回datagrid json数据
+		dataGrid.setTotal(page.getTotal());
+		dataGrid.setRows(listResponse);
+		return dataGrid;
 	}
 }
