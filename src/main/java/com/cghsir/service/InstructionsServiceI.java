@@ -14,7 +14,7 @@ public interface InstructionsServiceI {
 	 * @param id
 	 * @return
 	 */
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     /**
      * 新增一个对象
@@ -27,15 +27,16 @@ public interface InstructionsServiceI {
      * 动态新增一个对象
      * @param record
      * @return
+     * @throws Exception 
      */
-    int insertSelective(Instructions record);
+    int insertSelective(Instructions record) throws Exception;
 
     /**
      * 根据主键查询一个对象
      * @param id
      * @return
      */
-    Instructions selectByPrimaryKey(Integer id);
+    Instructions selectByPrimaryKey(String id);
 
     /**
      * 动态更新一条记录

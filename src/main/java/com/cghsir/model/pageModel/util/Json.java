@@ -9,7 +9,7 @@ public class Json implements java.io.Serializable{
 	private static final long serialVersionUID = 1L;
 
 	//执行标志
-	private boolean success = false; 
+	private boolean success = false;
 	
 	//消息
 	private String msg = "";

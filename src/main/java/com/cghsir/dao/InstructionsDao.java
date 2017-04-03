@@ -13,7 +13,7 @@ public interface InstructionsDao {
 	 * @param id
 	 * @return
 	 */
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(String id);
 
     /**
      * 新增一个对象
@@ -27,14 +27,14 @@ public interface InstructionsDao {
      * @param record
      * @return
      */
-    int insertSelective(Instructions record);
+    int insertSelective(Instructions record) throws Exception;
 
     /**
      * 根据主键查询一个对象
      * @param id
      * @return
      */
-    Instructions selectByPrimaryKey(Integer id);
+    Instructions selectByPrimaryKey(String id);
 
     /**
      * 动态更新一条记录

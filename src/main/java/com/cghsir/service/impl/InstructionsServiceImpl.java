@@ -23,7 +23,7 @@ public class InstructionsServiceImpl implements InstructionsServiceI {
 	 * @param id
 	 * @return
 	 */
-	public int deleteByPrimaryKey(Integer id) {
+	public int deleteByPrimaryKey(String id) {
 		return instructionsDao.deleteByPrimaryKey(id);
 	}
 
@@ -40,8 +40,9 @@ public class InstructionsServiceImpl implements InstructionsServiceI {
      * 动态新增一个对象
      * @param record
      * @return
+	 * @throws Exception 
      */
-	public int insertSelective(Instructions record) {
+	public int insertSelective(Instructions record) throws Exception {
 		return instructionsDao.insertSelective(record);
 	}
 
@@ -50,7 +51,7 @@ public class InstructionsServiceImpl implements InstructionsServiceI {
      * @param id
      * @return
      */
-	public Instructions selectByPrimaryKey(Integer id) {
+	public Instructions selectByPrimaryKey(String id) {
 		return instructionsDao.selectByPrimaryKey(id);
 	}
 
