@@ -22,6 +22,13 @@
 	select 
 	<include refid="Base_Column_List" />
     from instructions
+    where 1 = 1
+    <if test="instructions != null and instructions != ''">
+        AND instructions = #{instructions,jdbcType=VARCHAR}
+    </if>
+    <if test="creator != null and creator != ''">
+        AND creator = #{creator,jdbcType=VARCHAR}
+    </if>
   </select>
 
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
