@@ -14,7 +14,9 @@
         <mybatis.version>3.2.6</mybatis.version>  
         <!-- log4j日志文件管理包版本 -->  
         <slf4j.version>1.7.7</slf4j.version>  
-        <log4j.version>1.2.17</log4j.version>  
+        <log4j.version>1.2.17</log4j.version>
+        <!-- shiro版本 -->
+        <shiro.version>1.2.3</shiro.version>
   </properties>  
   <dependencies>
     <dependency>
@@ -23,6 +25,33 @@
       <version>3.8.1</version>
       <scope>test</scope> 
     </dependency>
+    <!-- 引入shiro -->
+	<dependency>
+		<groupId>org.apache.shiro</groupId>
+		<artifactId>shiro-core</artifactId>
+		<version>${shiro.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.shiro</groupId>
+		<artifactId>shiro-web</artifactId>
+		<version>${shiro.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.shiro</groupId>
+		<artifactId>shiro-cas</artifactId>
+		<version>${shiro.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.shiro</groupId>
+		<artifactId>shiro-spring</artifactId>
+		<version>${shiro.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.shiro</groupId>
+		<artifactId>shiro-ehcache</artifactId>
+		<version>${shiro.version}</version>
+	</dependency>
+    <!-- mybatis分页插件 -->
     <dependency>
 		<groupId>com.github.pagehelper</groupId>
 		<artifactId>pagehelper</artifactId>
