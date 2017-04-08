@@ -23,13 +23,14 @@
         <property name="cacheManager" ref="cacheManager"/>
         <property name="authenticator" ref="authenticator"></property>
         
+        <!-- 安全数据源集合 -->
         <property name="realms">
         	<list>
     			<ref bean="jdbcRealm"/>
     			<ref bean="secondRealm"/>
     		</list>
         </property>
-        
+        <!-- 记住我的时间 单位秒 -->
         <property name="rememberMeManager.cookie.maxAge" value="10"></property>
     </bean>
     
@@ -49,6 +50,7 @@
         <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/> 
     </bean>
     
+    <!-- 认证策略 默认3中实现 此策略为只要有一个realm认证通过 则认证通过 -->
     <bean id="authenticator" 
     	class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
     	<property name="authenticationStrategy">
@@ -66,7 +68,9 @@
     <bean id="jdbcRealm" class="com.cghsir.realms.ShiroRealm">
     	<property name="credentialsMatcher">
     		<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+    			<!-- 设置加密算法 -->
     			<property name="hashAlgorithmName" value="MD5"></property>
+    			<!-- 设置加密次数 -->
     			<property name="hashIterations" value="1024"></property>
     		</bean>
     	</property>
@@ -75,7 +79,9 @@
     <bean id="secondRealm" class="com.cghsir.realms.SecondRealm">
     	<property name="credentialsMatcher">
     		<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+    			<!-- 设置加密算法 -->
     			<property name="hashAlgorithmName" value="SHA1"></property>
+    			<!-- 设置加密次数 -->
     			<property name="hashIterations" value="1024"></property>
     		</bean>
     	</property>
@@ -117,9 +123,9 @@
     -->     
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/login.jsp"/>
-        <property name="successUrl" value="/list.jsp"/>
-        <property name="unauthorizedUrl" value="/unauthorized.jsp"/>
+        <property name="loginUrl" value="/user/login"/>
+        <!-- <property name="successUrl" value="/list.jsp"/>
+        <property name="unauthorizedUrl" value="/unauthorized.jsp"/> -->
         
         <!-- <property name="filterChainDefinitionMap" ref="filterChainDefinitionMap"></property> -->
         
@@ -134,8 +140,17 @@
           
         <property name="filterChainDefinitions">
             <value>
-                /login.jsp = anon
+            	/jsp/assets/** = anon
+            	/user/doLogin = anon
+            	/logout = logout
+            	/** = authc
+            
+                <!-- /login.jsp = anon
+                /user/login = anon
+                /note/logout = logout
                 
+                /user.jsp = roles[user]
+                /admin.jsp = roles[admin] -->
                 <!--  
                 /shiro/login = anon
                 /shiro/logout = logout
@@ -145,7 +160,7 @@
                 
                 # everything else requires authentication:
                 -->
-                /** = authc
+                <!-- /** = authc -->
             </value>
         </property>
         

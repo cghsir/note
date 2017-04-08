@@ -14,10 +14,10 @@
 	
 	Welcome: <shiro:principal></shiro:principal>
 	
-	<shiro:hasRole name="admin">
+	<%-- <shiro:hasRole name="admin"> --%>
 	<br><br>
 	<a href="admin.jsp">Admin Page</a>
-	</shiro:hasRole>
+	<%-- </shiro:hasRole> --%>
 	
 	<shiro:hasRole name="user">
 	<br><br>
@@ -28,7 +28,7 @@
 	<a href="shiro/testShiroAnnotation">Test ShiroAnnotation</a>
 	
 	<br><br>
-	<a href="shiro/logout">Logout</a>
+	<a href="note/logout">Logout</a>
 	
 </body>
 </html>

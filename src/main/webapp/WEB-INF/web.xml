@@ -5,6 +5,10 @@
     version="3.0">  
 
   <display-name>Archetype Created Web Application</display-name>
+  <servlet-mapping>  
+        <servlet-name>default</servlet-name>  
+        <url-pattern>*.ico</url-pattern>  
+    </servlet-mapping> 
   
   <servlet-mapping>  
         <servlet-name>default</servlet-name>  
@@ -14,8 +18,12 @@
     <servlet-mapping>  
         <servlet-name>default</servlet-name>  
         <url-pattern>*.gif</url-pattern>  
-  
-    </servlet-mapping>  
+    </servlet-mapping> 
+    
+    <servlet-mapping>  
+        <servlet-name>default</servlet-name>  
+        <url-pattern>*.png</url-pattern>  
+    </servlet-mapping> 
   
     <servlet-mapping>  
         <servlet-name>default</servlet-name>  
@@ -93,5 +101,10 @@
     </filter-mapping>
     <welcome-file-list>  
         <welcome-file>/index.jsp</welcome-file>  
-    </welcome-file-list>  
+    </welcome-file-list>
+    
+    <error-page>
+     <error-code>404</error-code>
+     <location>/jsp/errorPage/extra_404.jsp</location>
+ </error-page> 
 </web-app>
