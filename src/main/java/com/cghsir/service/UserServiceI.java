@@ -11,6 +11,17 @@ import com.cghsir.model.User;
  */
 public interface UserServiceI {
 	
+	/**
+	 * 根据一个对象查询一个列表
+	 * @param user
+	 * @return
+	 */
 	public List<User> selectByUser(User user);
+
+	/**
+	 * 新增一条记录
+	 * @param dbUser
+	 */
+	public void insertSelective(User record);
 	
 }

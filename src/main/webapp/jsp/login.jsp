@@ -1,27 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-<!-- BEGIN HEAD -->
-<head>
-  <meta charset="utf-8" />
-  <title>Metronic Admin Dashboard Template</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <meta content="" name="description" />
-  <meta content="" name="author" />
-  <link href="${pageContext.request.contextPath}/jsp/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="${pageContext.request.contextPath}/jsp/assets/css/metro.css" rel="stylesheet" />
-  <link href="${pageContext.request.contextPath}/jsp/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link href="${pageContext.request.contextPath}/jsp/assets/css/style.css" rel="stylesheet" />
-  <link href="${pageContext.request.contextPath}/jsp/assets/css/style_responsive.css" rel="stylesheet" />
-  <link href="${pageContext.request.contextPath}/jsp/assets/css/style_default.css" rel="stylesheet" id="style_color" />
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/jsp/assets/uniform/css/uniform.default.css" />
-  <link rel="/shortcut icon" href="favicon.ico" />
-</head>
-<!-- END HEAD -->
-<!-- BEGIN BODY -->
+<jsp:include page="inc/header.jsp" />
 <body class="login">
   <!-- BEGIN LOGO -->
   <div class="logo">
@@ -44,7 +23,7 @@
         <div class="controls">
           <div class="input-icon left">
             <i class="icon-user"></i>
-            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Username" name="username"/>
+            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Username" name="username" autofocus/>
           </div>
         </div>
       </div>
@@ -59,7 +38,7 @@
       </div>
       <div class="form-actions">
         <label class="checkbox">
-        <input type="checkbox" name="remember" value="1"/> Remember me
+        <input type="checkbox" name="remember" value="false" onchange="$(this).val($(this).is(':checked'));"/> Remember me
         </label>
         <button type="submit" class="btn green pull-right" script="alert();">
         Login <i class="m-icon-swapright m-icon-white"></i>
@@ -103,7 +82,7 @@
     </form>
     <!-- END FORGOT PASSWORD FORM -->
     <!-- BEGIN REGISTRATION FORM -->
-    <form class="form-vertical register-form" action="user/doLogin">
+    <form class="form-vertical register-form" method="post" action="${pageContext.request.contextPath}/user/register">
       <h3 class="">Sign Up</h3>
       <p>Enter your account details below:</p>
       <div class="control-group">
@@ -163,9 +142,13 @@
     <!-- END REGISTRATION FORM -->
   </div>
   <!-- END LOGIN -->
+<%-- <jsp:include page="inc/footer.jsp" /> --%>
+
+
+<!-- TODO 登录页面的样式与其他样式不一样 class="copyright" -->
   <!-- BEGIN COPYRIGHT -->
   <div class="copyright">
-    2013 &copy; Metronic. Admin Dashboard Template.
+    2017 &copy; cghsir. Background Management System.
   </div>
   <!-- END COPYRIGHT -->
   <!-- BEGIN JAVASCRIPTS -->
@@ -176,6 +159,7 @@
   <script type="text/javascript" src="${pageContext.request.contextPath}/jsp/assets/jquery-validation/dist/jquery.validate.min.js"></script>
   <script src="${pageContext.request.contextPath}/jsp/assets/js/app.js"></script>
   <script>
+
     jQuery(document).ready(function() {  
       App.initLogin();
     });

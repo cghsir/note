@@ -15,7 +15,7 @@
 				<div class="span12">
 					<!-- BEGIN PAGE TITLE & BREADCRUMB-->			
 					<h3 class="page-title">
-						404 Page				<small>404 page </small>
+						500 Page				<small>500 page </small>
 					</h3>
 					<ul class="breadcrumb">
 						<li>
@@ -27,7 +27,7 @@
 							<a href="#">Extra</a>
 							<i class="icon-angle-right"></i>
 						</li>
-						<li><a href="#">404 Page</a></li>
+						<li><a href="#">500 Page</a></li>
 					</ul>
 					<!-- END PAGE TITLE & BREADCRUMB-->
 				</div>
@@ -36,22 +36,35 @@
 			<!-- BEGIN PAGE CONTENT-->				
 			<div class="row-fluid">
 				<div class="span12">
-					<div class="row-fluid page-404">
+					<div class="row-fluid page-500">
 						<div class="span5 number">
-							404
+							500
 						</div>
 						<div class="span7 details">
-							<h3>Sorry, Your request is not found.</h3>
-							<p>
-								Maybe you could change your position and try again.<br />
-								Here's a button you can click on it to return to the home page.
-							</p>
-							<form action="#">You can&nbsp;&nbsp;
-								<a href="${pageContext.request.contextPath}/jsp/index.jsp">click me</a> 
-								&nbsp;&nbsp;&nbsp;&nbsp;back to index page!
-							</form>
+							<h3>Opps, Something went wrong.</h3>
+								<p>
+									We are fixing it!<br />
+									Please come back in a while.<br />
+									You can&nbsp;&nbsp;
+									<a href="${pageContext.request.contextPath}/jsp/index.jsp">click me</a> 
+									&nbsp;&nbsp;&nbsp;&nbsp;back to index page!
+								</p>
 						</div>
 					</div>
+				</div>
+				<div class="span12">
+					<div class="span7 details">
+							<h3 class="page-500">error message:</h3>
+								<p>
+									<% Exception ex = (Exception) request.getAttribute("ex");%>
+									Exception:&nbsp;&nbsp;<%=ex.getMessage()%>
+								</p>
+							<h3 class="page-500">error more message:</h3>
+								<p>
+									<% Exception exmore = (Exception) request.getAttribute("exmore");%>
+									Exception:&nbsp;&nbsp;<%=exmore.getMessage()%>
+								</p>
+						</div>
 				</div>
 			</div>
 			<!-- END PAGE CONTENT-->

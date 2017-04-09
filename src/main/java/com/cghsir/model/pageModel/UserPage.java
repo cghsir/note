@@ -8,6 +8,11 @@ import java.util.Date;
  *
  */
 public class UserPage {
+	
+	/**
+	 * rember me 功能默认false
+	 */
+	private boolean remember = false;
 
 	private String id;
 
@@ -107,5 +112,15 @@ public class UserPage {
 
     public void setAdmin(Boolean admin) {
         this.admin = admin;
-    }		
+    }
+
+	public boolean getRemember() {
+		return remember;
+	}
+
+	public void setRemember(boolean remember) {
+		this.remember = remember;
+	}
+    
+    
 }

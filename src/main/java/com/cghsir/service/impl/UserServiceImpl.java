@@ -19,5 +19,10 @@ public class UserServiceImpl implements UserServiceI {
 		return userDao.selectByUser(user);
 	}
 
+	@Override
+	public void insertSelective(User record) {
+		userDao.insertSelective(record);
+	}
+
 
 }
